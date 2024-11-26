@@ -15,8 +15,11 @@
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-  
-
+  const socket = io()
+  socket.on('broadcast', (data)=>{
+    document.body.innerHTML = '';
+    document.write(data);
+  });
 </script>
 
 </html>
