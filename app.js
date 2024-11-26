@@ -13,8 +13,7 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server)
 
-var nbsp = io.of('/hello')
-nbsp.on('connection', (socket)=>{
+io.on('connection', (socket)=>{
   console.log('a user connected')
   socket.emit('broadcast', 'Heyaa How are youuu????')
   socket.on('disconnect', ()=>{
