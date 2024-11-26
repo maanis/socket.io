@@ -14,6 +14,7 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server)
 
 io.on('connection', (socket)=>{
+  
   console.log('a user connected')
   socket.emit('broadcast', 'Heyaa How are youuu????')
   socket.on('disconnect', ()=>{
