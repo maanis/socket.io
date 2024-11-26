@@ -11,14 +11,13 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 var server = require('http').Server(app);
+var io = require('socket.io')(server)
 
-var io = socketIo(server);
 
-io.on('connection', (socket) => {
-  console.log('A user connected')
-  socket.emit('message', 'how are youuuuu')
-  socket.on('mess', (data) => {
-    console.log(data)
+io.on('connection', (socket)=>{
+  console.log('a user connected')
+  socket.on('disconnect', ()=>{
+    console.log('a user disconnected')
   })
 })
 
