@@ -13,16 +13,12 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server)
 
-var users = 0
-io.on('connection', (socket)=>{
+var nbsp = io.of('/hello')
+nbsp.on('connection', (socket)=>{
   console.log('a user connected')
-  users++
   socket.emit('broadcast', 'Heyaa How are youuu????')
-  socket.broadcast.emit('broadcast', `${users} connected`)
   socket.on('disconnect', ()=>{
     console.log('a user disconnected')
-    users--
-    socket.broadcast.emit('broadcast', `${users} connected`)
   })
 })
 
