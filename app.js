@@ -17,12 +17,12 @@ var users = 0
 io.on('connection', (socket)=>{
   console.log('a user connected')
   users++
-  io.sockets.emit('broadcast', `${users} connected`)
+  socket.emit('broadcast', 'Heyaa How are youuu????')
+  socket.broadcast.emit('broadcast', `${users} connected`)
   socket.on('disconnect', ()=>{
     console.log('a user disconnected')
     users--
-    io.sockets.emit('broadcast', `${users} connected`)
-
+    socket.broadcast.emit('broadcast', `${users} connected`)
   })
 })
 
